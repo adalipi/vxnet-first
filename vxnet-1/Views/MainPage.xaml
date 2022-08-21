@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:vxnet_1.Models"
+             x:Class="vxnet_1.Views.MainPage"
+             Title="{Binding Title}">
+
+    <CollectionView IsVisible="{Binding IsNotBusy}">
+        
+        <CollectionView.ItemsSource>
+            <x:Array Type="{x:Type model:Shop}">
+                <model:Shop Name="IdealMarket" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="Colroyt" Address="Anderlecht 34" City="Brussels" Open="False" />
+                <model:Shop Name="IdealMarket1" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="Colroyt2" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="Lidl" Address="Anderlecht 34" City="Brussels" Open="False" />
+                <model:Shop Name="Colroyt22" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="IdealMarket2" Address="Anderlecht 34" City="Brussels" Open="False" />
+                <model:Shop Name="Lidl2" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="IdealMarket12" Address="Anderlecht 34" City="Brussels" Open="False" />
+                <model:Shop Name="Colroyt3" Address="Anderlecht 34" City="Brussels" Open="True" />
+                <model:Shop Name="Lidl1" Address="Anderlecht 34" City="Brussels" Open="False" />
+                <model:Shop Name="Colroyt6" Address="Anderlecht 34" City="Brussels" Open="False" />
+            </x:Array>
+        </CollectionView.ItemsSource>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:Shop">
+                <HorizontalStackLayout Padding="10">
+                    <Label Text="{Binding Open}" FontSize="50" />
+                    <VerticalStackLayout Padding="10" Spacing="10">
+                        <Label Text="{Binding Name}" FontSize="35" />
+                        <Label Text="{Binding Address}" FontSize="20" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        
+    </CollectionView>
+
+</ContentPage>
