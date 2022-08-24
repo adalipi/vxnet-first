@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Entity
+namespace vxnet.Domain.Entity
 {
     public class Shop : BaseEntity
     {
         [Key]
-        [ForeignKey("Shop")]
+        //[ForeignKey("Shop")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -20,11 +20,14 @@ namespace Domain.Entity
         public string City { get; set; }
 
         [Required]
+        public string Country { get; set; }
+
+        [Required]
         public bool Open { get; set; }
 
-        public string FotoList { get; set; }
+        public string? FotoList { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
     }
 }

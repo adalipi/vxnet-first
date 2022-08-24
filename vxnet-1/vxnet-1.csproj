@@ -50,10 +50,15 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="System.Text.Json" Version="6.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\NewPage1.xaml">
+	  <ProjectReference Include="..\DTOs\vxnet.DTOs.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\DetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

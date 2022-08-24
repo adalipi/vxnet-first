@@ -1,19 +1,19 @@
-﻿using Domain.Entity;
+﻿using vxnet.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repository
+namespace vxnet.Domain.Repository
 {
     public interface IRepo<T> where T : BaseEntity
     {
-        IQueryable<T> GetAll();
+        IQueryable<T> GetAllAsQueryable();
+        Task<IEnumerable<T>> GetAllAsListAsync(CancellationToken token);
         void Add(T entity);
-        T Get(int id);
         void Update(T entity);
         void Delete(T entity);
-        Task SaveAsync();
+        Task SaveAsync(CancellationToken token);
     }
 }

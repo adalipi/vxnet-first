@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using vxnet.Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Context
+namespace vxnet.Domain.Context
 {
     public class AppDbContext : DbContext
     {
@@ -11,7 +12,7 @@ namespace Domain.Context
         { 
             base.OnModelCreating(builder);
 
-            builder.Entity<SMTH>().HasIndex(i => i.Name).IsUnique();
+            builder.Entity<Shop>();//.HasIndex(i => i.Name).IsUnique();
         }
     }
 }

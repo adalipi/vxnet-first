@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace vxnet_1.Models
+namespace vxnet.DTOs.Models
 {
-    public class Shop
+    public class ShopDTO
     {
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public bool Open { get; set; }
+        public string Country { get; set; }
     }
 }

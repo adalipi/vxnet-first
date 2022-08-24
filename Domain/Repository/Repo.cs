@@ -1,12 +1,13 @@
-﻿using Domain.Context;
-using Domain.Entity;
+﻿using vxnet.Domain.Context;
+using vxnet.Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Repository
+namespace vxnet.Domain.Repository
 {
     public class Repo<T> : IRepo<T> where T : BaseEntity
     {
@@ -19,27 +20,29 @@ namespace Domain.Repository
 
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            entity.CreationDate = DateTime.Now;
+            entity.ModificationDate = DateTime.Now;
+            _context.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
         }
 
-        public T Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAllAsQueryable()
         {
             return _context.Set<T>().AsQueryable();
         }
 
-        public Task SaveAsync()
+        public async Task<IEnumerable<T>> GetAllAsListAsync(CancellationToken token)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync(token);
+        }
+
+        public async Task SaveAsync(CancellationToken token)
+        {
+            await _context.SaveChangesAsync(token);
         }
 
         public void Update(T entity)

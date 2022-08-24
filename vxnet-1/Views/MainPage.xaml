@@ -1,41 +1,67 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:vxnet_1.Models"
+             xmlns:model="clr-namespace:vxnet.DTOs.Models;assembly=vxnet.DTOs"
              x:Class="vxnet_1.Views.MainPage"
+             xmlns:viewmodel="clr-namespace:vxnet_1.ViewModel"
+             x:DataType="viewmodel:ShopListViewModel"
              Title="{Binding Title}">
 
-    <CollectionView IsVisible="{Binding IsNotBusy}">
-        
-        <CollectionView.ItemsSource>
-            <x:Array Type="{x:Type model:Shop}">
-                <model:Shop Name="IdealMarket" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="Colroyt" Address="Anderlecht 34" City="Brussels" Open="False" />
-                <model:Shop Name="IdealMarket1" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="Colroyt2" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="Lidl" Address="Anderlecht 34" City="Brussels" Open="False" />
-                <model:Shop Name="Colroyt22" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="IdealMarket2" Address="Anderlecht 34" City="Brussels" Open="False" />
-                <model:Shop Name="Lidl2" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="IdealMarket12" Address="Anderlecht 34" City="Brussels" Open="False" />
-                <model:Shop Name="Colroyt3" Address="Anderlecht 34" City="Brussels" Open="True" />
-                <model:Shop Name="Lidl1" Address="Anderlecht 34" City="Brussels" Open="False" />
-                <model:Shop Name="Colroyt6" Address="Anderlecht 34" City="Brussels" Open="False" />
-            </x:Array>
-        </CollectionView.ItemsSource>
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+        <CollectionView BackgroundColor="Transparent"
+                        Grid.ColumnSpan="2"
+                        ItemsSource="{Binding Shops}"
+                        
+                        SelectionMode="None">
 
-        <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="model:Shop">
-                <HorizontalStackLayout Padding="10">
-                    <Label Text="{Binding Open}" FontSize="50" />
-                    <VerticalStackLayout Padding="10" Spacing="10">
-                        <Label Text="{Binding Name}" FontSize="35" />
-                        <Label Text="{Binding Address}" FontSize="20" />
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-        
-    </CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:ShopDTO">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125"
+                               Padding="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ShopListViewModel}}, Path=GoToDetailsCommand }" />
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0"
+                                  ColumnDefinitions="125,*">
+                                
+                            <Image Aspect="AspectFill"
+                                   Source="{Binding City}"
+                                   WidthRequest="125"
+                                   HeightRequest="125" />
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center" >
+                                    <Label Text="{Binding Name}" />
+                                    <Label Text="{Binding Address}" />
+
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+                
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Get Shops"
+                Grid.Row="1"
+                Command="{Binding GetShopsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                Margin="8" />
+
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Grid.RowSpan="2"
+                           Grid.ColumnSpan="2" />
+
+    </Grid>
 
 </ContentPage>

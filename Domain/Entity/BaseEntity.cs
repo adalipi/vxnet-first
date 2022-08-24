@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entity
+namespace vxnet.Domain.Entity
 {
     public abstract class BaseEntity
     {

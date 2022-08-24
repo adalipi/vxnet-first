@@ -1,4 +1,6 @@
-﻿namespace vxnet_1;
+﻿using vxnet_1.Services;
+using vxnet_1.Views;
+namespace vxnet_1;
 
 public static class MauiProgram
 {
@@ -13,6 +15,13 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		return builder.Build();
+		builder.Services.AddSingleton<ShopService>();
+        builder.Services.AddSingleton<ShopListViewModel>();
+		builder.Services.AddTransient<ShopDetailsViewModel>();
+
+        builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddTransient<DetailsPage>();
+
+        return builder.Build();
 	}
 }
