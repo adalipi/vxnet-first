@@ -7,12 +7,14 @@ namespace vxnet_1.ViewModel
     {
         
         ShopService _shopService;
+        IConnectivity _connectivity;
         public ObservableCollection<ShopDTO> Shops { get; } = new();
-
-        public ShopListViewModel(ShopService shopService)
+         
+        public ShopListViewModel(ShopService shopService, IConnectivity connectivity)
         {
             Title = "Shop Locator";
             _shopService = shopService;
+            _connectivity = connectivity;
         }
 
         [RelayCommand]
@@ -27,9 +29,15 @@ namespace vxnet_1.ViewModel
         async Task GetShopsAsync()
         {
             if (IsBusy)
-                return;
+                return; 
             try
             {
+                if (_connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    await Shell.Current.DisplayAlert("Internet issue", "Check you connection to the internet and try again", "OK");
+                    return;
+                }
+
                 IsBusy = true;
                 var shopList = await _shopService.GetShopsAsync();
 

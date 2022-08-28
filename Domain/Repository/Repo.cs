@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace vxnet.Domain.Repository
 {
@@ -30,14 +31,16 @@ namespace vxnet.Domain.Repository
             _context.Remove(entity);
         }
 
+
+
         public IQueryable<T> GetAllAsQueryable()
         {
             return _context.Set<T>().AsQueryable();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsListAsync(CancellationToken token)
+        public async Task<IEnumerable<T>> GetAllAsListAsync(Expression<Func<T, bool>> predicate = null, CancellationToken token = default)
         {
-            return await _context.Set<T>().ToListAsync(token);
+            return await _context.Set<T>().Where(predicate).ToListAsync(token);
         }
 
         public async Task SaveAsync(CancellationToken token)

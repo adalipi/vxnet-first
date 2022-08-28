@@ -18,7 +18,16 @@ namespace RestAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(CancellationToken cancellationToken = default)
         {
-            return Ok(await _shopService.GetShopsAsync(cancellationToken));
+            return Ok();
         }
+
+
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetNearbyShops([FromQuery] string city, [FromQuery] string address, CancellationToken cancellationToken = default)
+        {
+            return Ok(await _shopService.GetShopsAsync(city, address, cancellationToken));
+        }
+
     }
 }

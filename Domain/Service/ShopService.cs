@@ -8,6 +8,7 @@ using vxnet.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using vxnet.DTOs.Models;
+using System.Linq.Expressions;
 
 namespace vxnet.Domain.Service
 {
@@ -22,17 +23,17 @@ namespace vxnet.Domain.Service
             _logger = logger;
         }
 
-        public async Task<bool> ExistsShopAsync(CancellationToken token = default)
+        public async Task<bool> ExistsShopAsync(string name, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<ShopDTO>> GetShopsAsync(CancellationToken token = default)
+        public async Task<IEnumerable<Shop>> GetShopsAsync(string city, string address, CancellationToken token = default)
         {
             try
             {
-                var x = await _repo.GetAllAsListAsync(token);
-                return x.Select(itm => new ShopDTO { Address = itm.Address, City = itm.City, Country = itm.Country, Name = itm.Name, Open = itm.Open });
+                Expression<Func<Shop, bool>> wherePredicate = s => s.City == city && s.Address.Contains(address);
+                return await _repo.GetAllAsListAsync(wherePredicate, token);
             }
             catch (Exception e)
             {
@@ -41,17 +42,17 @@ namespace vxnet.Domain.Service
             }
         }
 
-        public async Task InsertShopAsync(CancellationToken token = default)
+        public async Task InsertShopAsync(Shop shop, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public async Task RemoveShopAsync(CancellationToken token = default)
+        public async Task RemoveShopAsync(Guid shopId, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }
 
-        public async Task UpdateShopAsync(CancellationToken token = default)
+        public async Task UpdateShopAsync(Shop shop, CancellationToken token = default)
         {
             throw new NotImplementedException();
         }

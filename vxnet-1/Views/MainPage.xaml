@@ -17,6 +17,16 @@
                         
                         SelectionMode="None">
 
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             WidthRequest="100"
+                             HeightRequest="200">
+                    <Label Text="NO DATA..." />
+
+                </StackLayout>
+            </CollectionView.EmptyView>
+            
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:ShopDTO">
                     <Grid Padding="10">

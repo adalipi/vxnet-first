@@ -11,7 +11,7 @@ namespace vxnet.DTOs.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public bool Open { get; set; }
+        public int Open { get; set; }
         public string Country { get; set; }
     }
 }
