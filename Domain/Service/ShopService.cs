@@ -1,13 +1,7 @@
 ﻿using vxnet.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using vxnet.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using vxnet.DTOs.Models;
 using System.Linq.Expressions;
 
 namespace vxnet.Domain.Service
@@ -26,6 +20,19 @@ namespace vxnet.Domain.Service
         public async Task<bool> ExistsShopAsync(string name, CancellationToken token = default)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Shop>> GetALLShopsAsync(CancellationToken token = default)
+        {
+            try
+            {
+                return await _repo.GetAllAsQueryable().Include(i => i.Products).ToListAsync(token);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("Could not fetch Shops from db", e);
+                throw;
+            }
         }
 
         public async Task<IEnumerable<Shop>> GetShopsAsync(string city, string address, CancellationToken token = default)

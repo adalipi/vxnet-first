@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http.Json;
 
 namespace vxnet_1.Services
 {
@@ -33,6 +27,5 @@ namespace vxnet_1.Services
 
             return ShopList;
         }
-        
     }
 }

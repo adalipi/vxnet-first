@@ -15,6 +15,7 @@ namespace vxnet.Domain.Service
         Task InsertShopAsync(Shop shop, CancellationToken token = default);
         Task UpdateShopAsync(Shop shop, CancellationToken token = default);
         Task RemoveShopAsync(Guid shopId, CancellationToken token = default);
+        Task<IEnumerable<Shop>> GetALLShopsAsync(CancellationToken token = default);
         Task<bool> ExistsShopAsync(string shopName, CancellationToken token = default);
     }
 }
