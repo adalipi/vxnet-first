@@ -43,7 +43,7 @@ namespace vxnet.Domain.Repository
             return await _context.Set<T>().Where(predicate).ToListAsync(token);
         }
 
-        public async Task SaveAsync(CancellationToken token)
+        public async Task SaveAsync(CancellationToken token = default)
         {
             await _context.SaveChangesAsync(token);
         }

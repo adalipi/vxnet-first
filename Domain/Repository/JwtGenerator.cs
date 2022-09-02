@@ -28,7 +28,7 @@ namespace vxnet.Domain.Repository
                 signingCredentials: credentials);
 
             var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-            return new SessionDTO { Token = tokenString, ExpirationMinutes = _jwtdto.ExpirationMinutes * 60 };
+            return new SessionDTO { Token = tokenString };
         }
     }
 }

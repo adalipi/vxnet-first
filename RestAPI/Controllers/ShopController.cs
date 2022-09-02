@@ -5,7 +5,7 @@ using vxnet.Domain.Service;
 namespace RestAPI.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ShopController : ControllerBase
     {

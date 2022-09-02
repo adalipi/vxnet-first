@@ -5,7 +5,7 @@ using vxnet.DTOs.Models;
 
 namespace RestAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {

@@ -41,6 +41,7 @@ namespace RestAPI
         {
             services.AddScoped<IShopService, ShopService>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAppRegService, AppRegService>();
         }
 
         static void AuthTokens(IServiceCollection services, IConfiguration configuration)
@@ -52,18 +53,16 @@ namespace RestAPI
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidateLifetime = true,
+                    ValidateLifetime = true, 
+                    RequireExpirationTime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["Jwt:Issuer"],
                     ValidAudience = configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"])),
+                    ClockSkew = TimeSpan.Zero
                 };
             });
         }
 
-        static void LdapConfig(IServiceCollection services, IConfiguration config)
-        {
-            
-        }
     }
 }

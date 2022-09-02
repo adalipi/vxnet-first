@@ -11,10 +11,10 @@ namespace vxnet.Domain.Repository
     public interface IRepo<T> where T : BaseEntity
     {
         IQueryable<T> GetAllAsQueryable();
-        Task<IEnumerable<T>> GetAllAsListAsync(Expression<Func<T, bool>> predicate, CancellationToken token);
+        Task<IEnumerable<T>> GetAllAsListAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-        Task SaveAsync(CancellationToken token);
+        Task SaveAsync(CancellationToken token = default);
     }
 }
