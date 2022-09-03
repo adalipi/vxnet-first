@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using vxnet.Domain.Service;
+using vxnet.DTOs.Request;
 
 namespace RestAPI.Controllers
 {
@@ -15,10 +16,12 @@ namespace RestAPI.Controllers
             _appRegService = appRegService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get(CancellationToken cancellationToken = default)
+        [HttpPost("[action]")]
+        public async Task<IActionResult> RegApp([FromBody] ReqRegApp regApp, CancellationToken cancellationToken = default)
         {
-            return Ok(await _appRegService.RegisterApp());
+            if (regApp.MyPrerty != "shkarkimiriregjistro")
+                return Ok();
+            return Ok(await _appRegService.RegisterApp(cancellationToken));
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IAuthService
     {
-        object ApiLogIn(string appId);
+        Task<object> ApiLogIn(string appId);
     }
 }

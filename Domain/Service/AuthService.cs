@@ -14,11 +14,19 @@ namespace vxnet.Domain.Service
             _appInstaRepo = appInstaRepo;
             _jwtGenerator = jwtGenerator;
         }
-        public object ApiLogIn(string appId)
+        public async Task<object> ApiLogIn(string appId)
         {
             if (_appInstaRepo.GetAllAsQueryable().Any(f => f.Id == Guid.Parse(appId)))
             {
-                return _jwtGenerator.GenerateJSONWebToken();
+                var jwt = _jwtGenerator.GenerateJSONWebToken();
+                if (jwt != null)
+                {
+                    var obj = _appInstaRepo.GetAllAsQueryable().First(f => f.Id == Guid.Parse(appId));
+                    obj.LoginCount++;
+                    _appInstaRepo.Update(obj);
+                    await _appInstaRepo.SaveAsync();
+                    return jwt;
+                }
             }
             return null;
         }

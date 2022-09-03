@@ -9,6 +9,6 @@ namespace vxnet.Domain.Service
 {
     public interface IAppRegService
     {
-        Task<AppInstance> RegisterApp();
+        Task<AppInstance> RegisterApp(CancellationToken token = default);
     }
 }

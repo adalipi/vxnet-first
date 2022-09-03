@@ -21,13 +21,13 @@ namespace vxnet.Domain.Service
             _logger = logger;
         }
 
-        public async Task<AppInstance> RegisterApp()
+        public async Task<AppInstance> RegisterApp(CancellationToken token = default)
         {
             try
             {
-                var newAppToReg = new AppInstance { Active = true };
+                var newAppToReg = new AppInstance { LoginCount = 0 };
                 _repo.Add(newAppToReg);
-                await _repo.SaveAsync();
+                await _repo.SaveAsync(token);
                 return newAppToReg;
             }
             catch (Exception e)

@@ -16,12 +16,12 @@ public partial class App : Application
 	{
 		base.OnStart();
 
-		var appId = Preferences.Get("AppId","");
-		if (string.IsNullOrWhiteSpace(appId))
+		var appid = Preferences.Get("appid", "");
+		if (string.IsNullOrWhiteSpace(appid))
 		{
-			var appReg = await _regAppService.RegisterAppIdAsync();
-			Preferences.Set("AppId", appReg.Id);
+			var appreg = await _regAppService.RegisterAppIdAsync();
+            Preferences.Set("appid", appreg.Id);
 		}
-		
-    }
+
+	}
 }

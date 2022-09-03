@@ -17,6 +17,6 @@ namespace vxnet.Domain.Entity
         public Guid Id { get; set; }
 
         [Required]
-        public bool Active { get; set; }
+        public int LoginCount { get; set; }
     }
 }

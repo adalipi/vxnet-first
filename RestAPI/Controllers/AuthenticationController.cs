@@ -19,7 +19,7 @@ namespace RestAPI.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromBody] AuthReqObject authObj, CancellationToken cancellationToken = default)
         {
-            var res = _authService.ApiLogIn(authObj.AppInstanceId);
+            var res = await _authService.ApiLogIn(authObj.AppInstanceId);
             
             if (res == null) return BadRequest();
             
