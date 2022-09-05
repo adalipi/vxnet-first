@@ -1,11 +1,6 @@
-using vxnet.Domain.Context;
-using Microsoft.EntityFrameworkCore;
-using RestAPI;
 using NLog.Web;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using vxnet.RestAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
