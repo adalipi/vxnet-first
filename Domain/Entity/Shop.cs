@@ -6,11 +6,6 @@ namespace vxnet.Domain.Entity
 {
     public class Shop : BaseEntity
     {
-        [Key]
-        [ForeignKey("Shop")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
@@ -35,6 +30,7 @@ namespace vxnet.Domain.Entity
 
         public virtual ICollection<ProductPerShop> Products { get; set; }
 
-
+        [Required]
+        public virtual AppInstance AppInstance { get; set; } //todo add AppIstanceId in table Shop
     }
 }

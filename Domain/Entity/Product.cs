@@ -10,12 +10,6 @@ namespace vxnet.Domain.Entity
 {
     public class Product : BaseEntity
     {
-        [Key]
-        [Required]
-        [ForeignKey("Product")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 
