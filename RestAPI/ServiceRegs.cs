@@ -1,14 +1,13 @@
-﻿using vxnet.Domain.Context;
-using vxnet.Domain.Repository;
-using vxnet.Domain.Service;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using vxnet.Domain.Context;
+using vxnet.Domain.Repository;
+using vxnet.Domain.Service;
 using vxnet.DTOs.Models;
 
-namespace RestAPI
+namespace vxnet.RestAPI
 {
     public static class ServiceRegs
     {

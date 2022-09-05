@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using vxnet.Domain.Service;
 using vxnet.DTOs.Request;
 
-namespace RestAPI.Controllers
+namespace vxnet.RestAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
