@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using vxnet.Domain.Service;
 
-namespace RestAPI.Controllers
+namespace vxnet.RestAPI.Controllers
 {
     [Authorize]
     [Route("[controller]")]

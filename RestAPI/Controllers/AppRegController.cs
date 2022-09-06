@@ -4,7 +4,7 @@ using vxnet.Domain.Service;
 using vxnet.DTOs.Constants;
 using vxnet.DTOs.Request;
 
-namespace RestAPI.Controllers
+namespace vxnet.RestAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]

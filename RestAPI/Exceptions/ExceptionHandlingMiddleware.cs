@@ -1,9 +1,8 @@
 ﻿using System.Net;
 using System.Text.Json;
-using Microsoft.Extensions.Logging;
 using vxnet.DTOs.Response;
 
-namespace RestAPI.Exceptions
+namespace vxnet.RestAPI.Exceptions
 {
     public class ExceptionHandlingMiddleware
     {
