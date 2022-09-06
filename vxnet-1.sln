@@ -3,19 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-<<<<<<< HEAD
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.App", "vxnet-1\vxnet.App.csproj", "{FE288FD7-2F2A-4AD5-A210-48108FE45C2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.App", "APP\vxnet.App.csproj", "{FE288FD7-2F2A-4AD5-A210-48108FE45C2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.Domain", "Domain\vxnet.Domain.csproj", "{C5A633A6-E167-4310-8893-EAAF0F4C9236}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.API", "RestAPI\vxnet.API.csproj", "{6ABEDAD3-4FE3-437F-9AEB-BA89CD6735D8}"
-=======
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.APP", "APP\vxnet.APP.csproj", "{FE288FD7-2F2A-4AD5-A210-48108FE45C2D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.Domain", "Domain\vxnet.Domain.csproj", "{C5A633A6-E167-4310-8893-EAAF0F4C9236}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.RestAPI", "RestAPI\vxnet.RestAPI.csproj", "{6ABEDAD3-4FE3-437F-9AEB-BA89CD6735D8}"
->>>>>>> 5e99884c9815c72d0949e0c9daa9d43780a223bc
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.RestAPI", "RestAPI\vxnet.RestAPI.csproj", "{5151B2A3-D0EB-4F9A-B6F0-16BEA055EBA3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "vxnet.DTOs", "DTOs\vxnet.DTOs.csproj", "{EC1595E5-0593-4A93-AEA0-F9AC7A9A5680}"
 EndProject
@@ -39,6 +31,10 @@ Global
 		{6ABEDAD3-4FE3-437F-9AEB-BA89CD6735D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6ABEDAD3-4FE3-437F-9AEB-BA89CD6735D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6ABEDAD3-4FE3-437F-9AEB-BA89CD6735D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5151B2A3-D0EB-4F9A-B6F0-16BEA055EBA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5151B2A3-D0EB-4F9A-B6F0-16BEA055EBA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5151B2A3-D0EB-4F9A-B6F0-16BEA055EBA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5151B2A3-D0EB-4F9A-B6F0-16BEA055EBA3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC1595E5-0593-4A93-AEA0-F9AC7A9A5680}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC1595E5-0593-4A93-AEA0-F9AC7A9A5680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC1595E5-0593-4A93-AEA0-F9AC7A9A5680}.Release|Any CPU.ActiveCfg = Release|Any CPU
