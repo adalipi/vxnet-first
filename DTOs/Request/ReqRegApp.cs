@@ -8,6 +8,6 @@ namespace vxnet.DTOs.Request
 {
     public class ReqRegApp
     {
-        public string? MyPrerty { get; set; }
+        public string? RequestMessage { get; set; }
     }
 }

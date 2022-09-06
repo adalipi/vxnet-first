@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using vxnet.DTOs.Constants;
+using vxnet.DTOs.Enums;
 using vxnet.DTOs.Request;
 using vxnet_1.RestService;
 
@@ -18,7 +20,7 @@ namespace vxnet_1.Services
 
         public async Task<AppIdDTO> RegisterAppIdAsync()
         {
-            return await _apiService.HttpPOST<AppIdDTO>("appreg/regapp", new ReqRegApp { MyPrerty = "shkarkimiriregjistro" });
+            return await _apiService.HttpPOST<AppIdDTO>("appreg/regapp", new ReqRegApp { RequestMessage = VXnetConstants.RegisterNewApp });
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using vxnet.Domain.Service;
+using vxnet.DTOs.Constants;
 using vxnet.DTOs.Request;
 
 namespace RestAPI.Controllers
@@ -19,7 +20,7 @@ namespace RestAPI.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> RegApp([FromBody] ReqRegApp regApp, CancellationToken cancellationToken = default)
         {
-            if (regApp.MyPrerty != "shkarkimiriregjistro")
+            if (regApp.RequestMessage != VXnetConstants.RegisterNewApp)
                 return Ok();
             return Ok(await _appRegService.RegisterApp(cancellationToken));
         }
