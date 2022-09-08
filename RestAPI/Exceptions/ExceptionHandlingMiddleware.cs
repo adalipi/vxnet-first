@@ -22,7 +22,7 @@ namespace vxnet.RestAPI.Exceptions
             }
             catch (Exception ex)
             {
-                await HandleExceptionAsync(httpContext, ex);
+                await HandleExceptionAsync(httpContext, ex); //todo maybe attach email so in case of UI error I got an email of whats wrong
             }
         }
         private async Task HandleExceptionAsync(HttpContext context, Exception exception)
@@ -52,7 +52,7 @@ namespace vxnet.RestAPI.Exceptions
                     break;
                 default:
                     response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    errorResponse.Message = "Internal Server errors. Check Logs!";
+                    errorResponse.Message = "Internal error. Try again!";
                     break;
             }
             _logger.LogError(exception.Message);

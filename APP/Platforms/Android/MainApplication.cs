@@ -1,11 +1,10 @@
 ﻿using Android.App;
 using Android.Runtime;
-using System.Net;
 
 namespace vxnet.APP;
 
 #if DEBUG
-[Application(UsesCleartextTraffic = true)]  // connect to local service
+[Application(UsesCleartextTraffic = true)]  // todo arjan check this: connect to local service?
 #else 
 [Application]
 #endif

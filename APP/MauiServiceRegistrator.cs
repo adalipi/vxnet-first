@@ -11,6 +11,7 @@ namespace vxnet.APP
             ViewModels(services);
             Services(services);
             HttpClients(services);
+            ExceptionMiddleware();
         }
 
         static void Pages(IServiceCollection services)
@@ -38,6 +39,11 @@ namespace vxnet.APP
         static void HttpClients(IServiceCollection services)
         {
             services.AddSingleton<IApiService, ApiService>();
+        }
+
+        static void ExceptionMiddleware()
+        {
+            
         }
     }
 }
