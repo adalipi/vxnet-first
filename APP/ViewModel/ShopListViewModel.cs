@@ -49,7 +49,7 @@ namespace vxnet.APP.ViewModel
                     Shops.Add(item);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Shell.Current.DisplayAlert("Error", "Not get shop list", "OK");
             }

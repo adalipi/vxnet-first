@@ -23,18 +23,10 @@ namespace vxnet.Domain.Service
 
         public async Task<AppInstance> RegisterApp(CancellationToken token = default)
         {
-            try
-            {
-                var newAppToReg = new AppInstance { LoginCount = 0 };
-                _repo.Add(newAppToReg);
-                await _repo.SaveAsync(token);
-                return newAppToReg;
-            }
-            catch (Exception e)
-            {
-                _logger.LogError("Could not fetch Shops from db", e);
-                throw;
-            }
+            var newAppToReg = new AppInstance { LoginCount = 0 };
+            _repo.Add(newAppToReg);
+            await _repo.SaveAsync(token);
+            return newAppToReg;
         }
     }
 }

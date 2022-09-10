@@ -1,4 +1,6 @@
-﻿namespace vxnet.APP;
+﻿using Microsoft.Maui.Hosting;
+
+namespace vxnet.APP;
 
 public static class MauiProgram
 {

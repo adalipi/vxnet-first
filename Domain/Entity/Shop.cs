@@ -6,7 +6,6 @@ namespace vxnet.Domain.Entity
 {
     public class Shop : BaseEntity
     {
-
         [Required]
         public string Name { get; set; }
 
@@ -31,6 +30,7 @@ namespace vxnet.Domain.Entity
 
         public virtual ICollection<ProductPerShop> Products { get; set; }
 
-
+        [Required]
+        public virtual AppInstance AppInstance { get; set; } //todo add AppIstanceId in table Shop
     }
 }

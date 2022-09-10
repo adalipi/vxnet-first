@@ -1,26 +1,23 @@
 ﻿using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
+using System.Net.Http.Headers;
 
 namespace vxnet.APP.RestService
 {
     public class ApiService : IApiService
     {
         private readonly HttpClient _httpClient;
-        string url = "http://localhost:5046/";//"http://10.0.2.2:5046/";
 
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(url);
+            _httpClient.BaseAddress = new Uri("http://localhost:5046/"); //for android emulator I need this: "http://10.0.2.2:5046/"
             _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), "Bearer ");
         }
 
         public async Task<T> HttpGET<T>(string url)
         {
-            var response = await _httpClient.GetAsync(url);
+            using var response = await _httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
             {
@@ -32,12 +29,12 @@ namespace vxnet.APP.RestService
                 return await HttpGET<T>(url);
             }
 
-            return default(T);
+            return default;
         }
 
         public async Task<T> HttpPOST<T>(string url, object postData)
         {
-            var response = await _httpClient.PostAsJsonAsync(url, postData);
+            using var response = await _httpClient.PostAsJsonAsync(url, postData);
 
             if (response.IsSuccessStatusCode)
             {
@@ -49,7 +46,7 @@ namespace vxnet.APP.RestService
                 return await HttpPOST<T>(url, postData);
             }
 
-            return default(T);
+            return default;
         }
 
         private async Task ApplyBearerToken()
@@ -57,7 +54,7 @@ namespace vxnet.APP.RestService
             var appId = Preferences.Get("AppId", "");
             if (appId == null)
             {
-                throw new Exception();//todo bad very bad still not appid...wrong...
+                throw new ApplicationException("Application not registered. Please remove and install the application again.");
             }
             else
             {

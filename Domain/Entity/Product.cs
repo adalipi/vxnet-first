@@ -10,7 +10,6 @@ namespace vxnet.Domain.Entity
 {
     public class Product : BaseEntity
     {
-        
         [Required]
         public string Name { get; set; }
 
