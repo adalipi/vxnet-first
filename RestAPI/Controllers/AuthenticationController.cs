@@ -18,7 +18,7 @@ namespace vxnet.RestAPI.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromBody] AuthReqObject authObj, CancellationToken cancellationToken = default)
         {
-            return Ok(await _authService.ApiLogIn(authObj.AppInstanceId));
+            return Ok(await _authService.ApiLogIn(authObj.AppInstanceId, cancellationToken));
             
             //if (res == null) return BadRequest();
             

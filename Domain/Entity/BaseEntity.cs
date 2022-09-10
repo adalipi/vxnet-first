@@ -10,11 +10,6 @@ namespace vxnet.Domain.Entity
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual Guid Id { get; set; }
 
-        [Key]
-        [Required]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual Guid Id { get; set; }
-
         [Required]
         public virtual DateTime CreationDate { get; set; }
 

@@ -45,7 +45,7 @@ namespace vxnet.RestAPI.Exceptions
                     errorResponse.Message = "Internal server error. Please try again!";
                     break;
             }
-            _logger.LogError(exception.Message);
+            _logger.LogError(exception.Message, exception);
             var result = JsonSerializer.Serialize(errorResponse);
             await context.Response.WriteAsync(result);
         }
