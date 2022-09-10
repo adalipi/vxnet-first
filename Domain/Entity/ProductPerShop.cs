@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using vxnet.DTOs.Enums;
 
 namespace vxnet.Domain.Entity
 {
-    public class ProductPerShop :BaseEntity
+    public class ProductPerShop : BaseEntity
     {
+        [NotMapped]
+        public override Guid Id { get; set; }
+
         [Key, Column(Order = 0)]
         public Guid ProductId { get; set; }
         

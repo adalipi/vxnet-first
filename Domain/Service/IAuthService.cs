@@ -1,7 +1,10 @@
-﻿namespace vxnet.Domain.Service
+﻿using vxnet.DTOs.Models;
+
+namespace vxnet.Domain.Service
 {
     public interface IAuthService
     {
-        Task<object> ApiLogIn(string appId);
+        Task<SessionDTO> ApiLogIn(string appId, CancellationToken token = default);
+        Task<SessionDTO> UserApiLogIn(string username, string password, CancellationToken token = default);
     }
 }

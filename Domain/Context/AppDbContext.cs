@@ -12,6 +12,7 @@ namespace vxnet.Domain.Context
         { 
             base.OnModelCreating(builder);
 
+            builder.Entity<UserManager>().HasIndex(i => i.Username).IsUnique();
             builder.Entity<AppInstance>();
             builder.Entity<Shop>().HasIndex(i => i.Name).IsUnique();
             builder.Entity<Product>().HasIndex(i => i.Name).IsUnique();

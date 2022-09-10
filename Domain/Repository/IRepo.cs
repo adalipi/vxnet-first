@@ -10,11 +10,15 @@ namespace vxnet.Domain.Repository
 {
     public interface IRepo<T> where T : BaseEntity
     {
+        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default);
+        Task<T> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default);
         IQueryable<T> GetAllAsQueryable();
         Task<IEnumerable<T>> GetAllAsListAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
         Task SaveAsync(CancellationToken token = default);
+
+
     }
 }

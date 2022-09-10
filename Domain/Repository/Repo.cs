@@ -53,5 +53,15 @@ namespace vxnet.Domain.Repository
             entity.ModificationDate = DateTime.Now;
             _context.Update(entity);
         }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default)
+        {
+            return await _context.Set<T>().AnyAsync(predicate, token);
+        }
+
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, CancellationToken token = default)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(predicate, token);
+        }
     }
 }

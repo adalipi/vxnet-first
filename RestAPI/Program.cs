@@ -1,13 +1,12 @@
 using NLog.Web;
-using System.Text.Json.Serialization;
 using vxnet.RestAPI;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
 builder.Services.RegisterDependecies(builder.Configuration);
 
 builder.Host.UseNLog();

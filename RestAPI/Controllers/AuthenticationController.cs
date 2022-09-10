@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using vxnet.Domain.Service;
 using vxnet.DTOs.Models;
 
@@ -19,11 +18,18 @@ namespace vxnet.RestAPI.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login([FromBody] AuthReqObject authObj, CancellationToken cancellationToken = default)
         {
-            var res = await _authService.ApiLogIn(authObj.AppInstanceId);
+            return Ok(await _authService.ApiLogIn(authObj.AppInstanceId));
             
-            if (res == null) return BadRequest();
+            //if (res == null) return BadRequest();
             
-            return Ok(res);
+            //return Ok(res);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UserLogin([FromBody] UserAuthReqObj authObj, CancellationToken cancellationToken = default)
+        {
+            return Ok(await _authService.UserApiLogIn(authObj.Username, authObj.Password, cancellationToken));
+
         }
     }
 }
