@@ -11,7 +11,10 @@ namespace vxnet.APP.RestService
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://localhost:5046/"); //for android emulator I need this: "http://10.0.2.2:5046/"
+            //for android: http://10.0.2.2:5046/ 
+            //for windows: http://localhost:5046/
+            //shiko a e ke port numrin keshtu apo jo? ndoshta ne pc tuaj eshte tjeter dhe jo 5046
+            _httpClient.BaseAddress = new Uri("http://10.0.2.2:5046/"); 
             _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), "Bearer ");
         }
 

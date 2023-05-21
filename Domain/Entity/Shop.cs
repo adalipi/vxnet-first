@@ -29,8 +29,6 @@ namespace vxnet.Domain.Entity
         public double? Longitude { get; set; }//todo during insert new: maybe getting long and latt from address
 
         public virtual ICollection<ProductPerShop> Products { get; set; }
-
-        [Required]
-        public virtual AppInstance AppInstance { get; set; } //todo add AppIstanceId in table Shop
+        
     }
 }
